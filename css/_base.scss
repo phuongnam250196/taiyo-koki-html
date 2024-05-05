@@ -1,0 +1,290 @@
+:root {
+    --c-red: #c40000;
+    --c-main: #333;
+    --c-text: #444444;
+    --c-gray: #777777;
+    --c-white: #fff;
+    --c-white-2: #F4F4F4;
+    --c-blue: #0098C7;
+    --c-blue-2: #00B2D6;
+    --c-blue-3: #0080B3;
+    --c-blue-4: #00568F;
+    --c-blue-5: #90D9F4;
+
+    --c-back: #000;
+
+    --c-orange: #FFF8F2;
+    --c-yellow: #E7B504;
+
+    --font-family-zen: "Zen Kaku Gothic New", sans-serif;
+    --font-family-out-fit: "Outfit", sans-serif;
+    --font-family-noto-san: "Noto Serif JP", sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    font-size: 16px;
+    color: var(--c-main);
+    background-color: var(--c-white);
+    font-family: var(--font-family-zen);
+}
+
+.wrapper {
+    max-width: 1440px;
+    background-color: var(--c-white);
+    margin: 0 auto;
+}
+
+.container-c {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: 1200.98px) {
+        padding: 0 22px;
+    }
+}
+
+.title-base {
+    font-weight: 700;
+    font-size: 28px;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.white-space {
+    white-space: pre-line;
+}
+
+.ele-container-c {
+    padding: 0;
+
+    .ele-title {
+        .elementor-heading-title {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}
+
+.td-none {
+    color: var(--c-main);
+    text-decoration: none;
+}
+
+.base-btn {
+    border-radius: 300px;
+    border: 1px solid var(--c-blue);
+    background: var(--c-white);
+    color: var(--c-blue);
+    font-size: 14px;
+    font-weight: 400;
+    width: 236px;
+    height: 54px;
+    text-decoration: none;
+    @include center_flex;
+    justify-content: space-between;
+    padding-left: 29px;
+    padding-right: 22px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        height: 70px;
+        padding-left: 37px;
+        font-size: 16px;
+    }
+}
+
+.title-group {
+    position: relative;
+    .title {
+        color: var(--c-white);
+        font-family: var(--font-family-out-fit);
+        font-size: 112px;
+        font-weight: 100;
+        letter-spacing: 11.2px;
+        margin-bottom: 0;
+        line-height: normal;
+    }
+    .desc {
+        color: var(--c-white);
+        font-family: var(--font-family-zen);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 1.6px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .title {
+            font-size: 64px;
+            font-weight: 100;
+            line-height: 50px;
+            letter-spacing: 6.4px;
+        }
+        .desc {
+            text-align: center;
+        }
+    }
+}
+
+.img {
+    overflow: hidden;
+
+    img {
+        transition: all 1s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.owl-link {
+    text-decoration: none;
+    color: inherit;
+
+    &:focus {
+        color: inherit !important;
+    }
+}
+
+.enable-animation {
+    width: 100%;
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+
+    @media screen and (max-width: 768px) {
+        height: auto;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
+
+.marquee {
+    --gap: 40px;
+    // position: relative;
+    display: flex;
+    // overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+}
+
+.marquee__content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px 40px;
+    min-width: 100%;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+
+/* Pause animation when reduced-motion is set */
+@media (prefers-reduced-motion: reduce) {
+    .marquee__content {
+        animation-play-state: paused !important;
+    }
+}
+
+/* Enable animation */
+.enable-animation .marquee__content {
+    animation: scroll 16s linear infinite;
+}
+
+/* Reverse animation */
+.marquee--reverse .marquee__content {
+    animation-direction: reverse;
+}
+
+/* Pause on hover */
+.marquee--hover-pause:hover .marquee__content {
+    animation-play-state: paused;
+}
+
+/* Attempt to size parent based on content. Keep in mind that the parent width is equal to both content containers that stretch to fill the parent. */
+.marquee--fit-content {
+    max-width: fit-content;
+}
+
+/* A fit-content sizing fix: Absolute position the duplicate container. This will set the size of the parent wrapper to a single child container. Shout out to Olavi's article that had this solution 👏 @link: https://olavihaapala.fi/2021/02/23/modern-marquee.html  */
+.marquee--pos-absolute .marquee__content:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Enable position absolute animation on the duplicate content (last-child) */
+.enable-animation .marquee--pos-absolute .marquee__content:last-child {
+    animation-name: scroll-abs;
+}
+
+@keyframes scroll-abs {
+    from {
+        transform: translateX(calc(100% + var(--gap)));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.animation_box {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: 3s ease;
+}
